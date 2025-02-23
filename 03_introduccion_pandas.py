@@ -37,11 +37,15 @@ df_ordenado = df.sort_values(by="Efectividad", ascending=False)
 print("\n📋 Tabla de jugadores ordenada por efectividad (Goles/Tiros):")
 print(df_ordenado)
 
-# 3. Filtrar jugadores con efectividad mayor a 0.4
+# 3. Filtrar jugadores con efectividad mayor o igual a 0.4
 
-jugadores_efectivos = df[df["Efectividad"] > 0.4]
-print("\n🚀 Jugadores con efectividad mayor a 0.4:")
-print(jugadores_efectivos)
+jugadores_efectivos = df[df["Efectividad"] >= 0.4]
 
+# 🏆 Validar si hay jugadores en el filtro
+if jugadores_efectivos.empty:
+    print("\n ⚠️ No hay jugadores con efectividad mayor a 0.4.")
+else:
+    print("\n 🚀 Jugadores con efectividad 0.4 o mayor:")
+    print(jugadores_efectivos)
 
 # EN EL SIGUIENTE SE VIENE NUMPY + PANDAS

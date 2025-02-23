@@ -7,7 +7,7 @@ import numpy as np
 
 # Creamos un DataFrame con datos ficticios de jugadores
 
-np.random.seed(42)  # NO TE ASUSTES ! ASI TENDRAS LOS MISMOS VALORES ALEATORIOS QUE YO
+np.random.seed(42)  # NO TE ASUSTES ! ASI TENDRÁS LOS MISMOS VALORES ALEATORIOS QUE YO
 
 data = {
     "Jugador": ["P.Guerrero", "G.Lapadula", "E.Flores", "A.Valera", "J.Rivera", "L.Ramos"],
@@ -30,33 +30,48 @@ print(df)
 
 # 🔍 Jugadores con más de 3 goles
 jugadores_goleadores = df[df["Goles"] > 3]
-print("\n🔥 Jugadores con más de 3 goles:")
-print(jugadores_goleadores)
+if jugadores_goleadores.empty:
+    print("\n⚠️ No hay jugadores con más de 3 goles.")
+else:
+    print("\n🔥 Jugadores con más de 3 goles:")
+    print(jugadores_goleadores)
 
 # 🎯 Jugadores con más de 10 tiros y al menos 2 asistencias
 jugadores_activos = df[(df["Tiros"] > 10) & (df["Asistencias"] >= 2)]
-print("\n🎯 Jugadores con más de 10 tiros y al menos 2 asistencias:")
-print(jugadores_activos)
+if jugadores_activos.empty:
+    print("\n⚠️ No hay jugadores con más de 10 tiros y al menos 2 asistencias.")
+else:
+    print("\n🎯 Jugadores con más de 10 tiros y al menos 2 asistencias:")
+    print(jugadores_activos)
 
 # 🏆 Jugador con más goles
-jugador_top_goleador = df.loc[df["Goles"].idxmax()]
-print("\n🏆 Jugador con más goles:")
-print(jugador_top_goleador)
+if df["Goles"].max() == 0:
+    print("\n🏆 No hay jugadores con goles registrados.")
+else:
+    jugador_top_goleador = df.loc[df["Goles"].idxmax()]
+    print("\n🏆 Jugador con más goles:")
+    print(jugador_top_goleador)
 
 # 📊 Jugadores menores de 25 años con más de 500 minutos jugados
 jugadores_jovenes = df[(df["Edad"] < 25) & (df["Minutos_Jugados"] > 500)]
-print("\n🚀 Jugadores menores de 25 años con más de 500 minutos jugados:")
-print(jugadores_jovenes)
+if jugadores_jovenes.empty:
+    print("\n⚠️ No hay jugadores menores de 25 años con más de 500 minutos jugados.")
+else:
+    print("\n🚀 Jugadores menores de 25 años con más de 500 minutos jugados:")
+    print(jugadores_jovenes)
 
 # 🎯 Efectividad de cada jugador (Goles/Tiros)
-df["Efectividad"] = df["Goles"] / df["Tiros"]
+df["Efectividad"] = (df["Goles"] / df["Tiros"]).round(2)
 print("\n📈 Tabla con efectividad de jugadores:")
 print(df)
 
 # 🏅 Jugadores con efectividad mayor al 40%
 jugadores_efectivos = df[df["Efectividad"] > 0.4]
-print("\n🏅 Jugadores con efectividad mayor al 40%:")
-print(jugadores_efectivos)
+if jugadores_efectivos.empty:
+    print("\n⚠️ No hay jugadores con efectividad mayor al 40%.")
+else:
+    print("\n🏅 Jugadores con efectividad mayor al 40%:")
+    print(jugadores_efectivos)
 
 # --------------------------------------------
 # EJERCICIO: Realiza un filtro para encontrar jugadores con:
