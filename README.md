@@ -1,4 +1,4 @@
-# 📉 Reporte de Rendimiento de Jugadores - Streamlit
+# 📉 APRENDE A CODEAR EN PYTHON CON FUTBOL - GRONESTATS
 
 Este repositorio contiene 5 ejercicios en Python que muestran cómo analizar y visualizar datos de rendimiento de jugadores en fútbol usando Streamlit, NumPy y Pandas. Puedes descargar estos archivos y ejecutarlos en VS Code siguiendo los pasos a continuación.
 
